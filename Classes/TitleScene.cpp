@@ -41,24 +41,27 @@ bool TitleScene::init()
 	this->addChild(SceneName);
 
 	// Close 버튼 설정.	
-	auto closeButton = MenuItemImage::create("Close_ButtonOff.png", "Close_ButtonOn.png", CC_CALLBACK_1(TitleScene::menuCloseCallback, this));
+	auto closeButton = MenuItemImage::create("Close_ButtonOff.png", "Close_ButtonOn.png", CC_CALLBACK_1(TitleScene::MenuCloseCallback, this));
 	closeButton->setAnchorPoint(Point(1, 0));
 	closeButton->setPosition(Vec2(visibleSize.width - 5, 5));
 	auto closeMenu = Menu::create(closeButton, NULL);
 	closeMenu->setPosition(Vec2::ZERO);
 	this->addChild(closeMenu);
 
-
 	// Menu 설정.
-	
-	
+	auto itemPlay = MenuItemFont::create("PlayScene", CC_CALLBACK_1(TitleScene::MenuCallback, this));
+	auto itemHighScore = MenuItemFont::create("HighScore", CC_CALLBACK_1(TitleScene::MenuCallback, this));
+	auto itemAbout = MenuItemFont::create("About this", CC_CALLBACK_1(TitleScene::MenuCallback, this));
 
+	auto menu = Menu::create(itemPlay, itemHighScore, itemAbout, NULL);
+	menu->alignItemsVertically();
+	this->addChild(menu);
 
     return true;
 }
 
 
-void TitleScene::menuCloseCallback(Ref* pSender)
+void TitleScene::MenuCloseCallback(Ref* pSender)
 {
     //Close the cocos2d-x game scene and quit the application
     Director::getInstance()->end();
@@ -67,10 +70,15 @@ void TitleScene::menuCloseCallback(Ref* pSender)
     exit(0);
 #endif
     
-    /*To navigate back to native iOS screen(if present) without quitting the application  ,do not use Director::getInstance()->end() and exit(0) as given above,instead trigger a custom event created in RootViewController.mm as below*/
+    /*To navigate  back to native iOS screen(if present) without quitting the application  ,do not use Director::getInstance()->end() and exit(0) as given above,instead trigger a custom event created in RootViewController.mm as below*/
     
     //EventCustom customEndEvent("game_scene_close_event");
     //_eventDispatcher->dispatchEvent(&customEndEvent);
     
-    
+}
+
+void TitleScene::MenuCallback(Ref* pSender)
+{
+	CCLOG("menuCallback");
+	auto item = (MenuItemFont*)pSender;
 }
