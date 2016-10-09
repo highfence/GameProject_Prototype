@@ -46,8 +46,6 @@ bool AboutScene::init()
 	this->addChild(Menu);
 
 	return true;
-
-	return true;
 }
 
 void AboutScene::MenuCloseCallback(Ref *pSender)

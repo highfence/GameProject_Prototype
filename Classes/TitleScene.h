@@ -9,9 +9,10 @@ public:
     virtual bool init() override;
     
     // a selector callback
-    void MenuCloseCallback(cocos2d::Ref* pSender);
-	void MenuCallback(cocos2d::Ref* pSender);
-	void ChangeToPlayScene(Ref* pSender);
+    void MenuCloseCallback(Ref*);
+	void ChangeToStoryScene(Ref*);
+	void ChangeToHighscoreScene(Ref*);
+	void ChangeToAboutScene(Ref*);
 
     // implement the "static create()" method manually
     CREATE_FUNC(TitleScene);

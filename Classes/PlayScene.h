@@ -5,7 +5,7 @@ class PlayScene : public Layer
 {
 public :
 
-	static Scene* createScene();
+	static cocos2d::Scene* createScene();
 
 	virtual bool init() override;
 	CREATE_FUNC(PlayScene);

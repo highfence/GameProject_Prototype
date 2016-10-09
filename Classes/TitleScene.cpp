@@ -1,7 +1,9 @@
 #include "pch.h"
 #include "SimpleAudioEngine.h"
+#include "StoryScene.h"
+#include "HighscoreScene.h"
+#include "AboutScene.h"
 #include "TitleScene.h"
-#include "PlayScene.h"
 
 Scene* TitleScene::createScene()
 {
@@ -49,11 +51,11 @@ bool TitleScene::init()
 	this->addChild(closeMenu);
 
 	// Menu ¼³Á¤.
-	auto itemPlay = MenuItemFont::create("PlayScene", CC_CALLBACK_1(TitleScene::ChangeToPlayScene, this));
-	auto itemHighScore = MenuItemFont::create("HighScore", CC_CALLBACK_1(TitleScene::MenuCallback, this));
-	auto itemAbout = MenuItemFont::create("About this", CC_CALLBACK_1(TitleScene::MenuCallback, this));
+	auto itemStart = MenuItemFont::create("Start Play!", CC_CALLBACK_1(TitleScene::ChangeToStoryScene, this));
+	auto itemHighScore = MenuItemFont::create("HighScore", CC_CALLBACK_1(TitleScene::ChangeToHighscoreScene, this));
+	auto itemAbout = MenuItemFont::create("About this", CC_CALLBACK_1(TitleScene::ChangeToAboutScene, this));
 
-	auto menu = Menu::create(itemPlay, itemHighScore, itemAbout, NULL);
+	auto menu = Menu::create(itemStart, itemHighScore, itemAbout, NULL);
 	menu->alignItemsVertically();
 	this->addChild(menu);
 
@@ -77,13 +79,17 @@ void TitleScene::MenuCloseCallback(Ref* pSender)
     
 }
 
-void TitleScene::MenuCallback(Ref* pSender)
+void TitleScene::ChangeToStoryScene(Ref* pSender)
 {
-	CCLOG("MenuCallback");
-	auto item = (MenuItemFont*)pSender;
+	Director::getInstance()->replaceScene(StoryScene::createScene());
 }
 
-void TitleScene::ChangeToPlayScene(Ref* pSender)
+void TitleScene::ChangeToAboutScene(Ref* pSender)
 {
-	Director::getInstance()->replaceScene(PlayScene::createScene());
+	Director::getInstance()->pushScene(AboutScene::createScene());
+}
+
+void TitleScene::ChangeToHighscoreScene(Ref* pSender)
+{
+	Director::getInstance()->pushScene(HighscoreScene::createScene());
 }
