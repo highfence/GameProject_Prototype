@@ -1,18 +1,16 @@
 #pragma once
 
 
-class PlayScene : public Layer
+class DeadScene : public Layer
 {
-public :
+public:
 
 	static cocos2d::Scene* createScene();
 
 	virtual bool init() override;
 
 	void MenuCloseCallback(Ref*);
-	void IfPlayerDead(Ref*);
-	void IfStageClear(Ref*);
+	void ReturnToTitle(Ref*);
+	CREATE_FUNC(DeadScene);
 
-	CREATE_FUNC(PlayScene);
-	
 };
