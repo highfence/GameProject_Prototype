@@ -1,7 +1,7 @@
-#include "TitleScene.h"
+#include "pch.h"
 #include "SimpleAudioEngine.h"
-
-USING_NS_CC;
+#include "TitleScene.h"
+#include "PlayScene.h"
 
 Scene* TitleScene::createScene()
 {
@@ -28,9 +28,9 @@ bool TitleScene::init()
     
     auto visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
-
+	
 	// 타이틀 설정
-	auto title = Label::createWithTTF("Scene Management Prototype", "NotoSansCJKkr-Bold.otf", 34);
+	auto title = Label::createWithTTF(u8"씬 매니지먼트 연습", "NotoSansCJKkr-Bold.otf", 34);
 	title->setPosition(Vec2(visibleSize.width * 0.5f, visibleSize.height * 0.75f));
 	this->addChild(title);
 	
@@ -49,7 +49,7 @@ bool TitleScene::init()
 	this->addChild(closeMenu);
 
 	// Menu 설정.
-	auto itemPlay = MenuItemFont::create("PlayScene", CC_CALLBACK_1(TitleScene::MenuCallback, this));
+	auto itemPlay = MenuItemFont::create("PlayScene", CC_CALLBACK_1(TitleScene::ChangeToPlayScene, this));
 	auto itemHighScore = MenuItemFont::create("HighScore", CC_CALLBACK_1(TitleScene::MenuCallback, this));
 	auto itemAbout = MenuItemFont::create("About this", CC_CALLBACK_1(TitleScene::MenuCallback, this));
 
@@ -79,6 +79,11 @@ void TitleScene::MenuCloseCallback(Ref* pSender)
 
 void TitleScene::MenuCallback(Ref* pSender)
 {
-	CCLOG("menuCallback");
+	CCLOG("MenuCallback");
 	auto item = (MenuItemFont*)pSender;
+}
+
+void TitleScene::ChangeToPlayScene(Ref* pSender)
+{
+	Director::getInstance()->replaceScene(PlayScene::createScene());
 }
