@@ -13,6 +13,11 @@ public:
 	void ReturnToTitle(Ref*);
 	void ChangeToPlayScene(Ref*);
 
+	void StopBGM(Ref*);
+	void ReplayBGM(Ref*);
+
+	Size visibleSize;
+
 	CREATE_FUNC(StoryScene);
 
 };

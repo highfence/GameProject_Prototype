@@ -13,6 +13,10 @@ public :
 	void IfPlayerDead(Ref*);
 	void IfStageClear(Ref*);
 
+	void EffectCritical(Ref*);
+	void EffectDefence(Ref*);
+	void EffectMiss(Ref*);
+
 	CREATE_FUNC(PlayScene);
 	
 };

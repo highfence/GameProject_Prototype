@@ -20,7 +20,10 @@ bool StoryScene::init()
 		return false;
 	}
 
-	auto visibleSize = Director::getInstance()->getVisibleSize();
+	visibleSize = Director::getInstance()->getVisibleSize();
+
+	// BGM 재생.
+	SimpleAudioEngine::getInstance()->playBackgroundMusic("justClimbing.mp3");
 
 	// 타이틀 설정
 	auto title = Label::createWithTTF("Story Scene", "NotoSansCJKkr-Bold.otf", 34);
@@ -44,10 +47,13 @@ bool StoryScene::init()
 	// 메뉴 아이템 설정.
 	auto itemPlay = MenuItemFont::create("Skip Story", CC_CALLBACK_1(StoryScene::ChangeToPlayScene, this));
 	auto itemBack = MenuItemFont::create("Back to Title", CC_CALLBACK_1(StoryScene::ReturnToTitle, this));
+	auto itemPause = MenuItemFont::create("BGM Pause", CC_CALLBACK_1(StoryScene::StopBGM, this));
+	auto itemResume = MenuItemFont::create("BGM Replay", CC_CALLBACK_1(StoryScene::ReplayBGM, this));
 
-	auto Menu = Menu::create(itemPlay, itemBack, NULL);
+	auto Menu = Menu::create(itemPlay, itemBack, itemPause, itemResume, NULL);
 	Menu->alignItemsVertically();
 	this->addChild(Menu);
+
 
 	return true;
 }
@@ -65,4 +71,15 @@ void StoryScene::ChangeToPlayScene(Ref* pSender)
 void StoryScene::ReturnToTitle(Ref* pSener)
 {
 	Director::getInstance()->replaceScene(TitleScene::createScene());
+}
+
+
+void StoryScene::StopBGM(Ref* pSender)
+{
+	SimpleAudioEngine::getInstance()->pauseBackgroundMusic();
+}
+
+void StoryScene::ReplayBGM(Ref* pSender)
+{
+	SimpleAudioEngine::getInstance()->resumeBackgroundMusic();
 }

@@ -12,7 +12,6 @@ Scene* EndingScene::createScene()
 	return scene;
 }
 
-
 bool EndingScene::init()
 {
 	if (!Layer::init())
@@ -32,6 +31,7 @@ bool EndingScene::init()
 	SceneName->setAnchorPoint(Point(0, 1));
 	SceneName->setPosition(Vec2(5, visibleSize.height));
 	this->addChild(SceneName);
+
 
 	// Close 버튼 설정
 	auto closeButton = MenuItemImage::create("Close_ButtonOff.png", "Close_ButtonOn.png", CC_CALLBACK_1(EndingScene::MenuCloseCallback, this));

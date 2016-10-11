@@ -44,8 +44,11 @@ bool PlayScene::init()
 	// 메뉴 아이템 설정.
 	auto itemDead = MenuItemFont::create("if Player Dead", CC_CALLBACK_1(PlayScene::IfPlayerDead, this));
 	auto itemClear = MenuItemFont::create("if Player Clear Stage", CC_CALLBACK_1(PlayScene::IfStageClear, this));
+	auto itemCritical = MenuItemFont::create("Effect_Critical Hit", CC_CALLBACK_1(PlayScene::EffectCritical, this));
+	auto itemDefence = MenuItemFont::create("Effect_Defence", CC_CALLBACK_1(PlayScene::EffectDefence, this));
+	auto itemMiss = MenuItemFont::create("Effect_Miss", CC_CALLBACK_1(PlayScene::EffectMiss, this));
 
-	auto Menu = Menu::create(itemDead, itemClear, NULL);
+	auto Menu = Menu::create(itemDead, itemClear, itemCritical, itemDefence, itemMiss, NULL);
 	Menu->alignItemsVertically();
 	this->addChild(Menu);
 
@@ -65,4 +68,19 @@ void PlayScene::IfPlayerDead(Ref* pSender)
 void PlayScene::IfStageClear(Ref* pSender)
 {
 	Director::getInstance()->replaceScene(EndingScene::createScene());
+}
+
+void PlayScene::EffectCritical(Ref* pSender)
+{
+	SimpleAudioEngine::getInstance()->playEffect("Critical.wav");
+}
+
+void PlayScene::EffectDefence(Ref* pSender)
+{
+	SimpleAudioEngine::getInstance()->playEffect("Defence.wav");
+}
+
+void PlayScene::EffectMiss(Ref* pSender)
+{
+	SimpleAudioEngine::getInstance()->playEffect("Miss.wav");
 }
