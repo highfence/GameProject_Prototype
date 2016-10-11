@@ -39,23 +39,23 @@ pop/pushScene은 스택 구조에 씬을 저장하는 방법입니다.
 
 ##Sounds :
 
-사운드는 기본적으로 SimpleAudioEngine.h이라는 헤더 파일을 필요로 합니다. cocos2d-x에서 제공하는 여러가지 사운드 기능들이 들어있는 헤더입니다.
-또한 pre-complied header에 using namespace CocosDenshion을 통하여 네임스페이스를 생략하였습니다.
+사운드는 기본적으로 SimpleAudioEngine.h이라는 헤더 파일을 필요로 합니다. cocos2d-x에서 제공하는 여러가지 사운드 기능들이 들어있는 헤더입니다.<br>
+또한 pre-complied header에 using namespace CocosDenshion을 통하여 네임스페이스를 생략하였습니다.<br>
 
-StoryScene에 우선 배경음악을 출력해 보았습니다.
-배경음악은 간단히
+StoryScene에 우선 배경음악을 출력해 보았습니다.<br>
+배경음악은 간단히<br>
 '''
 SimpleAudioEngine::getInstance()->playBackgroundMusic("BGM.mp3");
 '''
-와 같은 형식으로 출력할 수 있습니다.
-또한 배경음악은 
+와 같은 형식으로 출력할 수 있습니다.<br>
+또한 배경음악은 <br>
 '''
 SimpleAudioEngine::getInstance()->pauseBackgroundMusic();
 SimpleAudioEngine::getInstance()->resumeBackgroundMusic();
 '''
-같은 함수를 통하여 쉽게 일시 정지/리플레이를 조작할 수 있습니다.
+같은 함수를 통하여 쉽게 일시 정지/리플레이를 조작할 수 있습니다.<br>
 
-또한
+또한<br>
 '''
 SimpleAudioEngine::getInstance()->setBackgroundMusicVolume(float Volume);
 // 배경음 볼륨지정<br>
@@ -66,15 +66,15 @@ SimpleAudioEngine:: getInstance()->preloadBackgroundMusic(const char *pszFilePat
 bool SimpleAudioEngine:: getInstance()->isBackgroundMusicPlaying();
 // 배경음 플레이 여부를 리턴받기. <br>
 '''
-같은 기능들을 제공합니다.
+같은 기능들을 제공합니다.<br>
 
 
-그 이후 PlayScene에 효과음을 출력해보았습니다.
+그 이후 PlayScene에 효과음을 출력해보았습니다.<br>
 '''
 SimpleAudioEngine::getInstance()->playEffect("effect.wav", false);
 '''
-출력방법은 비슷하며 효과음은 효과음 고유의 int형 ID값을 리턴받는다는 점이 차이점입니다.
-이 ID를 통하여 효과음을 제어할 수 있지만, 보통은 현재 출력되고 있는 모든 효과음을 한 번에 제어하는 경우가 많다고 합니다.
+출력방법은 비슷하며 효과음은 효과음 고유의 int형 ID값을 리턴받는다는 점이 차이점입니다.<br>
+이 ID를 통하여 효과음을 제어할 수 있지만, 보통은 현재 출력되고 있는 모든 효과음을 한 번에 제어하는 경우가 많다고 합니다.<br>
 
 '''
 SimpleAudioEngine::getInstance()->pauseAllEffects();
