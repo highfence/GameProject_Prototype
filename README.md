@@ -58,13 +58,13 @@ SimpleAudioEngine::getInstance()->resumeBackgroundMusic();
 또한<br>
 ```
 SimpleAudioEngine::getInstance()->setBackgroundMusicVolume(float Volume);
-// 배경음 볼륨지정<br>
+// 배경음 볼륨지정
 float SimpleAudioEngine:: getInstance()->getBackgroundMusicVolume();
-// 배경음 볼륨값 얻어오기 <br>
+// 배경음 볼륨값 얻어오기 
 SimpleAudioEngine:: getInstance()->preloadBackgroundMusic(const char *pszFilePath);
-// 배경음 미리 로딩해오기 <br>
+// 배경음 미리 로딩해오기 
 bool SimpleAudioEngine:: getInstance()->isBackgroundMusicPlaying();
-// 배경음 플레이 여부를 리턴받기. <br>
+// 배경음 플레이 여부를 리턴받기.
 ```
 같은 기능들을 제공합니다.<br>
 
