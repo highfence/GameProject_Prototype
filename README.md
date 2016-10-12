@@ -80,3 +80,5 @@ SimpleAudioEngine::getInstance()->playEffect("effect.wav", false);
 SimpleAudioEngine::getInstance()->pauseAllEffects();
 SimpleAudioEngine::getInstance()->resumeAllEffects();
 ```
+효과음은 처음 재생될 때 map 형태의 자료구조에 캐싱되어 다음번 호출에는 로딩 없이 사용이 가능합니다. 
+
